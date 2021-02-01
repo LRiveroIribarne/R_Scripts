@@ -24,6 +24,8 @@ library(sf)
 url = "https://edcintl.cr.usgs.gov/downloads/sciweb1/shared/fews/web/global/monthly/eta/downloads/"
 dir.out = "D:/FONDECYT_1171560_BD/SSEBOP/data"
 Descargar_imgs = FALSE # TRUE = descargar serie SSEBOP, FALSE = NO descargar serie SSEBOP
+Guardar_tif = FALSE # Guardar datos agregados anualmente en formato .tif
+dir.tif = "D:/FONDECYT_1171560_BD/SSEBOP/resultados/rast"
 
 imgs.files = read_html(url) %>% html_nodes("a") %>% html_text() 
 imgs.files = imgs.files[6: length(imgs.files)]
@@ -81,6 +83,7 @@ Eta_year = Eta %>% group_by(year) %>% summarize(Eta_year=sum(Eta))
 g2=ggplot(data = Eta_year, aes(x = year, y = Eta_year)) +
   geom_point() + geom_line(aes(group = 1)) + 
   theme_bw() + geom_vline(xintercept=2010, linetype="dashed", color = "red", size=1) +
+  annotate(geom = "text", x = 2010, y = 600000,vjust = -0.5, label = "Megasequía", color = "red", angle = 90) +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
   labs(title = "Evapotranspiración actual (SSEBOP) - Cauquenes en desembocadura", x = "fecha", y = "ETa (mm)") 
 g2
@@ -92,6 +95,20 @@ ggplotly(p = g2)
 Eta_Cau_Desemb_yearly = tapp(Eta_Cau_Desemb, Eta$year, sum)
 Eta_Cau_Desemb_mean = app(x = Eta_Cau_Desemb_yearly, fun = mean, cores = detectCores() - 1)
 Eta_Cau_Desemb_mean_df = as.data.frame(Eta_Cau_Desemb_mean, xy = TRUE) %>% drop_na()
+
+if (Guardar_tif) {
+  
+  for (i in 1:nlyr(Eta_Cau_Desemb_yearly)) {
+    
+    writeRaster(x = Eta_Cau_Desemb_yearly[[i]],
+                filename = paste0(dir.tif, "/", names(Eta_Cau_Desemb_yearly[[i]]) ,"_Eta_Cau_Desemb.tif"), 
+                overwrite = TRUE)
+    
+    print(paste("Guardando imagen", i, "de", nlyr(Eta_Cau_Desemb_yearly), "---", round((i/nlyr(Eta_Cau_Desemb_yearly)*100),2), "%"))
+    
+  }
+  
+}
 
 ggplot() + 
   geom_raster(data = Eta_Cau_Desemb_mean_df, aes(x = x, y = y, fill = mean)) +
@@ -117,7 +134,7 @@ ggplot() +
   geom_sf(data = st_as_sf(as.data.frame(Cau_Desemb, geom = TRUE), wkt = "geometry", crs=crs(Cau_Desemb)), fill = "transparent") +
   scale_fill_viridis_c(name = "mm/año", direction = -1) +
   labs(x = "Longitud", y = "Latitud",
-       title = "ETa promedio anual periodo Sin megasequía 2003 - 2010") +
+       title = "ETa promedio anual periodo Sin megasequía 2003 - 2009") +
   cowplot::theme_cowplot() +
   theme(panel.grid.major = element_line(color = "black",
                                         linetype = "dashed",
