@@ -13,5 +13,6 @@ Scripts R
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**Web_Scrapping_meteo_INIA.R**: Script que descarga la serie temporal completa de Temperatura (°C), Humedad relativa (%), precipitaciones (mm), radiación (Mj/m2/s), velocidad de viento (m/s) y evapotranspiración de referencia Penman-Monteith (mm) desde plataforma INIA (https://agrometeorologia.cl/) usando el paquete de "web scrapping" RSelenium.
+**Web_Scrapping_meteo_INIA.R**: Script que descarga la serie temporal completa de Temperatura (°C), Humedad relativa (%), precipitaciones (mm), radiación (Mj/m2/s), velocidad de viento (m/s) y evapotranspiración de referencia Penman-Monteith (mm) desde plataforma INIA (https://agrometeorologia.cl/) usando el paquete de "web scrapping" RSelenium
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
