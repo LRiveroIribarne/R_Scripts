@@ -16,3 +16,8 @@ Scripts R
 **Web_Scrapping_meteo_INIA.R**: Script que descarga la serie temporal completa de Temperatura (°C), Humedad relativa (%), precipitaciones (mm), radiación (Mj/m2/s), velocidad de viento (m/s) y evapotranspiración de referencia Penman-Monteith (mm) desde plataforma INIA (https://agrometeorologia.cl/) usando el paquete de "web scrapping" RSelenium
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**HRM_functions.R**: Script con funciones para calcular transpiración a partir de datos medidos in situ con Heath Ratio Method (HRM) - Sap Flow
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**SAP_FLOW_HRM.R**: Script que Calcula la velocidad de flujo de sabia corregida a partir de datos HRM (requiere de **HRM_functions.R**)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
