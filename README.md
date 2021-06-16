@@ -20,6 +20,6 @@ Scripts R
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-**SAP_FLOW_HRM.R**: Script que Calcula la velocidad de flujo de sabia corregida a partir de datos HRM (requiere de **HRM_functions.R**)
+**SAP_FLOW_HRM.R**: Script que calcula la velocidad de flujo de sabia corregida a partir de datos HRM (requiere de **HRM_functions.R**)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
