@@ -3,7 +3,6 @@ Scripts R
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 **SSEBOP_download_TS_raster_plot.R**: Script que descarga serie completa SSEBOP ET mensual, genera una serie de tiempo de esta y grafica en formato raster la media para años determinados, en este caso:
 
  * Periodo completo (2003 - 2020)
@@ -18,6 +17,9 @@ Scripts R
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **HRM_functions.R**: Script con funciones para calcular transpiración a partir de datos medidos in situ con Heath Ratio Method (HRM) - Sap Flow
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 **SAP_FLOW_HRM.R**: Script que Calcula la velocidad de flujo de sabia corregida a partir de datos HRM (requiere de **HRM_functions.R**)
+
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
